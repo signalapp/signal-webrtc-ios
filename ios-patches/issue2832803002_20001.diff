@@ -1,0 +1,55 @@
+Index: AUTHORS
+diff --git a/AUTHORS b/AUTHORS
+index 6527da841ca093d85e08a033a3bf2e7b961bb69e..c11e96d7f4f7f9e265b53cf626f6c6135240054a 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -49,6 +49,7 @@ Steve Reid <sreid@sea-to-sky.net>
+ Vladimir Beloborodov <VladimirTechMan@gmail.com>
+ Vicken Simonian <vsimon@gmail.com>
+ Victor Costan <costan@gmail.com>
++Xiaohong Xu <freemine@yeah.net>
+ 
+ &yet LLC <*@andyet.com>
+ Agora IO <*@agora.io>
+Index: webrtc/sdk/BUILD.gn
+diff --git a/webrtc/sdk/BUILD.gn b/webrtc/sdk/BUILD.gn
+index 38c5b68de6b300ab0e1901b6ac24ace4377dfc1d..ea5531178bbafbdcc00c92d3da2e257fbda55cb4 100644
+--- a/webrtc/sdk/BUILD.gn
++++ b/webrtc/sdk/BUILD.gn
+@@ -307,6 +307,7 @@ if (is_ios || is_mac) {
+         "objc/Framework/Headers/WebRTC/RTCAVFoundationVideoSource.h",
+         "objc/Framework/Headers/WebRTC/RTCAudioSource.h",
+         "objc/Framework/Headers/WebRTC/RTCAudioTrack.h",
++        "objc/Framework/Headers/WebRTC/RTCCameraVideoCapturer.h",
+         "objc/Framework/Headers/WebRTC/RTCCameraPreviewView.h",
+         "objc/Framework/Headers/WebRTC/RTCConfiguration.h",
+         "objc/Framework/Headers/WebRTC/RTCDataChannel.h",
+@@ -336,6 +337,7 @@ if (is_ios || is_mac) {
+         "objc/Framework/Headers/WebRTC/RTCSSLAdapter.h",
+         "objc/Framework/Headers/WebRTC/RTCSessionDescription.h",
+         "objc/Framework/Headers/WebRTC/RTCTracing.h",
++        "objc/Framework/Headers/WebRTC/RTCVideoCapturer.h",
+         "objc/Framework/Headers/WebRTC/RTCVideoFrame.h",
+         "objc/Framework/Headers/WebRTC/RTCVideoRenderer.h",
+         "objc/Framework/Headers/WebRTC/RTCVideoSource.h",
+Index: webrtc/sdk/objc/Framework/Headers/WebRTC/WebRTC.h
+diff --git a/webrtc/sdk/objc/Framework/Headers/WebRTC/WebRTC.h b/webrtc/sdk/objc/Framework/Headers/WebRTC/WebRTC.h
+index 27fad0df3131c85878d4bdb1935936dc7757bf6f..2840ec2d208b6a030cc658ea42be8ac0dec431f7 100644
+--- a/webrtc/sdk/objc/Framework/Headers/WebRTC/WebRTC.h
++++ b/webrtc/sdk/objc/Framework/Headers/WebRTC/WebRTC.h
+@@ -11,6 +11,7 @@
+ #import <WebRTC/RTCAVFoundationVideoSource.h>
+ #import <WebRTC/RTCAudioSource.h>
+ #import <WebRTC/RTCAudioTrack.h>
++#import <WebRTC/RTCCameraVideoCapturer.h>
+ #if TARGET_OS_IPHONE
+ #import <WebRTC/RTCCameraPreviewView.h>
+ #endif
+@@ -20,6 +21,7 @@
+ #import <WebRTC/RTCDispatcher.h>
+ #if TARGET_OS_IPHONE
+ #import <WebRTC/RTCEAGLVideoView.h>
++#import <WebRTC/RTCMTLVideoView.h>
+ #endif
+ #import <WebRTC/RTCFieldTrials.h>
+ #import <WebRTC/RTCFileLogger.h>
