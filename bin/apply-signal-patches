@@ -10,21 +10,30 @@
 BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 PATCHES_DIR="${BIN_DIR}/../libwebrtc-android/patches"
+IOS_PATCHES_DIR="${BIN_DIR}/../ios-patches"
 WEBRTC_DIR="${BIN_DIR}/../webrtc"
 
 if [ ! -d "$PATCHES_DIR" ]
 then
-  echo " [!] patches dir does not exist: ${PATCHES_DIR}"
+  echo " [!] PATCHES_DIR does not exist: ${PATCHES_DIR}"
+  exit 1
+fi
+
+if [ ! -d "$IOS_PATCHES_DIR" ]
+then
+  echo " [!] IOS_PATCHES_DIR does not exist: ${IOS_PATCHES_DIR}"
   exit 1
 fi
 
 if [ ! -d "$WEBRTC_DIR" ]
 then
-  echo " [!] webrtc dir does not exist: ${PATCHES_DIR}"
+  echo " [!] WEBRTC_DIR does not exist: ${WEBRTC_DIR}"
   exit 1
 fi
 
 cd "$WEBRTC_DIR/src"
+
+echo "Applying patches from ${PATCHES_DIR}"
 for patch_file in $(ls "$PATCHES_DIR")
 do
   echo "Applying patch file: ${patch_file}"
@@ -39,3 +48,20 @@ do
     exit 1
   fi
 done
+
+echo "Applying patches from ${IOS_PATCHES_DIR}"
+for patch_file in $(ls "$IOS_PATCHES_DIR")
+do
+  echo "Applying patch file: ${patch_file}"
+  echo "..."
+  patch -p1 < "${IOS_PATCHES_DIR}/${patch_file}"
+
+  if [ $? -eq 0 ]
+  then
+    echo "Success!"
+  else
+    echo " [!] Failed to apply patch file: ${patch_file}"
+    exit 1
+  fi
+done
+
