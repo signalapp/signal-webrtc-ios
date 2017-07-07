@@ -64,3 +64,7 @@ The remaining steps must occur every time you're building/updating WebRTC.framew
     rm -r $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/WebRTC.framework
     mv out_ios_libs/WebRTC.framework $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/
 
+    # Make sure we add any new files, since we gitignore *
+    cd $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS
+    git add -f WebRTC.framework
+

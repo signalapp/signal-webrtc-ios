@@ -33,9 +33,11 @@ fi
 
 cd "$WEBRTC_DIR/src"
 
-echo "Applying patches from ${PATCHES_DIR}"
+echo "Shared patches from ${PATCHES_DIR}"
+echo "###"
 for patch_file in $(ls "$PATCHES_DIR")
 do
+  echo ""
   echo "Applying patch file: ${patch_file}"
   echo "..."
   patch -p1 < "${PATCHES_DIR}/${patch_file}"
@@ -49,9 +51,11 @@ do
   fi
 done
 
-echo "Applying patches from ${IOS_PATCHES_DIR}"
+echo "Patches from ${IOS_PATCHES_DIR}"
+echo "###"
 for patch_file in $(ls "$IOS_PATCHES_DIR")
 do
+  echo ""
   echo "Applying patch file: ${patch_file}"
   echo "..."
   patch -p1 < "${IOS_PATCHES_DIR}/${patch_file}"

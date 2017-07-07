@@ -1,16 +1,3 @@
-Index: AUTHORS
-diff --git a/AUTHORS b/AUTHORS
-index 6527da841ca093d85e08a033a3bf2e7b961bb69e..c11e96d7f4f7f9e265b53cf626f6c6135240054a 100644
---- a/AUTHORS
-+++ b/AUTHORS
-@@ -49,6 +49,7 @@ Steve Reid <sreid@sea-to-sky.net>
- Vladimir Beloborodov <VladimirTechMan@gmail.com>
- Vicken Simonian <vsimon@gmail.com>
- Victor Costan <costan@gmail.com>
-+Xiaohong Xu <freemine@yeah.net>
- 
- &yet LLC <*@andyet.com>
- Agora IO <*@agora.io>
 Index: webrtc/sdk/BUILD.gn
 diff --git a/webrtc/sdk/BUILD.gn b/webrtc/sdk/BUILD.gn
 index 38c5b68de6b300ab0e1901b6ac24ace4377dfc1d..ea5531178bbafbdcc00c92d3da2e257fbda55cb4 100644
