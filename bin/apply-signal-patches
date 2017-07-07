@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# Applies Signal specific modifications to webrtc
+#
+# Example Usage:
+#
+#     bin/apply-patches
+#
+
+BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+PATCHES_DIR="${BIN_DIR}/../libwebrtc-android/patches"
+WEBRTC_DIR="${BIN_DIR}/../webrtc"
+
+if [ ! -d "$PATCHES_DIR" ]
+then
+  echo " [!] patches dir does not exist: ${PATCHES_DIR}"
+  exit 1
+fi
+
+if [ ! -d "$WEBRTC_DIR" ]
+then
+  echo " [!] webrtc dir does not exist: ${PATCHES_DIR}"
+  exit 1
+fi
+
+cd "$WEBRTC_DIR/src"
+for patch_file in $(ls "$PATCHES_DIR")
+do
+  echo "Applying patch file: ${patch_file}"
+  echo "..."
+  patch -p1 < "${PATCHES_DIR}/${patch_file}"
+
+  if [ $? -eq 0 ]
+  then
+    echo "Success!"
+  else
+    echo " [!] Failed to apply patch file: ${patch_file}"
+    exit 1
+  fi
+done

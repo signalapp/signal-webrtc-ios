@@ -1,3 +1,6 @@
 [submodule "src"]
-	path = src
+	path = webrtc/src
 	url = https://chromium.googlesource.com/external/webrtc.git
+[submodule "libwebrtc-android"]
+	path = libwebrtc-android
+	url = https://github.com/WhisperSystems/libwebrtc-android.git
