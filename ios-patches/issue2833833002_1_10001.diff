@@ -19,7 +19,7 @@ index 630db84f14be471ba134fa4bb559c5808e25cbff..1cf6669ed4f6933d88fb03205914dbcf
        ]
 +    } else if (use_xcode_clang &&
 +               (xcode_version == "0830" || xcode_version == "0831" ||
-+                xcode_version == "0832")) {
++                xcode_version == "0832" || xcode_version == "0833" )) {
 +      # This is necessary to allow a progressive transition from using xcode 8 to 8.3. Remove when all bots are migrated to 8.3.
 +      cflags += [
 +        # TODO(thakis): https://crbug.com/604888
