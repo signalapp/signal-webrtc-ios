@@ -52,6 +52,7 @@ The remaining steps must occur every time you're building/updating WebRTC.framew
     ../../bin/apply-signal-patches
 
     # 5. Build WebRTC.framework
+    # Finally. Why we're all here.
     tools-webrtc/ios/build_ios_libs.sh
 
     # If you get errors about missing build tools, like 'gn', you may be
