@@ -9,36 +9,43 @@ https://webrtc.org/native-code/ios/
 
 Initial Setup for first time building WebRTC.framework
 
-    # 1. Installation prerequisites
+## Installation prerequisites
 
-    # depot tools
+### Install depot tools
+
     cd <somewhere>
     git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
     cd depot_tools
     export PATH=<somewhere>/depot_tools:"$PATH"
 
-    # 2. Fetch webrtc source
+## Fetch webrtc source
+
+    git clone https://github.com/WhisperSignal/signal-webrtc-ios
     cd signal-webrtc-ios
-    mkdir webrtc
+
+    # Fetch the webrtc src root plus our shared patches
+    git submodule update --init
+
+    # Install webrtc submodules specified in DEPS
     cd webrtc
-    fetch --nohooks webrtc_ios
+    gclient sync
 
-The remaining steps must occur every time you're building/updating WebRTC.framework
+## Updating WebRTC.framework (optional)
 
-    # 3. Point to appropriate release
+This section is only required if you want to use a newer version.    
+based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
+
+    # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
     #
-    # based on:
-    #    https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
-
-    # Make sure you are in 'webrtc/src'.
-    #
-    # This part should only need to be done once, but it won't hurt to
-    # repeat it.  The first time might take a while because it fetches
+    # The first time your run this might take a while because it fetches
     # an extra 1/2 GB or so of branch commits.
     gclient sync --with_branch_heads
 
     # You may have to explicitly 'git fetch origin' to pull branch-heads/
     git fetch
+
+    # List available branch heads
+    git branch -a 
 
     # Checkout the branch 'src' tree.
     git checkout branch-heads/$LATEST_STABLE_RELEASE_NUMBER
@@ -46,13 +53,16 @@ The remaining steps must occur every time you're building/updating WebRTC.framew
     # Checkout all the submodules at their branch DEPS revisions.
     gclient sync --jobs 16
 
-    # 4. Apply Signal Patches
+    # Apply Signal Patches
     # NOTE: If you've previosly applied the patches, they won't apply
     # cleanly. Start from a pristine clean webrtc dir.
     ../../bin/apply-signal-patches
 
-    # 5. Build WebRTC.framework
-    # Finally. Why we're all here.
+## Building WebRTC.framework
+
+Finally. Why we're all here.
+
+    # the webrtc project includes a script to build a fat framework for arm/arm63/i386/x86_64 
     tools-webrtc/ios/build_ios_libs.sh
 
     # If you get errors about missing build tools, like 'gn', you may be
@@ -60,8 +70,12 @@ The remaining steps must occur every time you're building/updating WebRTC.framew
     # WebRTC.framework" step:
     gclient runhooks
 
-    # 6. Move the WebRTC.framework into Signal-iOS's Carthage directory
+# Integrate into Signal
+
+    # Remove the existing directory to make sure any obsolete files are removed
     rm -r $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/WebRTC.framework
+
+    # move the WebRTC.framework into Signal-iOS's Carthage directory
     mv out_ios_libs/WebRTC.framework $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/
 
     # Make sure we add any new files, since we gitignore *
