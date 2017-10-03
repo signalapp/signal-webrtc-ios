@@ -2,6 +2,15 @@ Patches required to build webrtc for Signal on iOS
 
 ## Current Patches
 
+### patch file: 004_metalkit_aspect_fill.diff
+
+The MetalKit backed video renderer is currently hardcoded to AspectFit,
+which causes letterboxing for our fullscreen video preview. This fix was
+suggested on the mailing list, and may be unnecessary in future
+versions.
+
+https://groups.google.com/forum/#!searchin/discuss-webrtc/RTCMTLVideoView%7Csort:relevance/discuss-webrtc/Fn4Q0dUranY/1YZApRVWAwAJ
+
 ### patch file:   ios-patches/003_detect_metalkit.diff
 
 In M58 WebRTC introduced MetalKit backed rendering, which enables a
