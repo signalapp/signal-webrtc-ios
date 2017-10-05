@@ -1,0 +1,20 @@
+diff --git a/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m b/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
+index e36cb3ab4..012c2ecd8 100644
+--- a/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
++++ b/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
+@@ -60,7 +60,14 @@
+ 
+ + (BOOL)isMetalAvailable {
+ #if defined(RTC_SUPPORTS_METAL)
+-  return YES;
++  // Signal supports iOS8/64bit, so a compiler macro is insufficient.
++  // Instead, we dynamically check if MetalKit framework is available.
++  // return YES;
++  if ([MTKView class]) {
++      return YES;
++  } else {
++      return NO;
++  }
+ #else
+   return NO;
+ #endif

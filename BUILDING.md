@@ -63,7 +63,7 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
 Finally. Why we're all here.
 
     # the webrtc project includes a script to build a fat framework for arm/arm63/i386/x86_64 
-    tools-webrtc/ios/build_ios_libs.sh
+    tools_webrtc/ios/build_ios_libs.sh
 
     # If you get errors about missing build tools, like 'gn', you may be
     # able to install them with the following (then go back to "Build
