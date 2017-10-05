@@ -11,6 +11,10 @@ Initial Setup for first time building WebRTC.framework
 
 ## Installation prerequisites
 
+### Apple Dev Tools
+
+**Note** currently building WebRTC requires Xcode9+
+
 ### Install depot tools
 
     cd <somewhere>
