@@ -1,0 +1,13 @@
+diff --git a/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m b/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
+index e36cb3ab4..ec933f9e8 100644
+--- a/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
++++ b/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
+@@ -90,7 +97,7 @@
+   if (_metalView) {
+     _metalView.delegate = self;
+     [self addSubview:_metalView];
+-    _metalView.contentMode = UIViewContentModeScaleAspectFit;
++    _metalView.contentMode = UIViewContentModeScaleAspectFill;
+     _metalView.translatesAutoresizingMaskIntoConstraints = NO;
+     UILayoutGuide *margins = self.layoutMarginsGuide;
+     [_metalView.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
