@@ -1,7 +1,7 @@
-diff --git a/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m b/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
+diff --git a/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m b/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
 index e36cb3ab4..012c2ecd8 100644
---- a/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
-+++ b/webrtc/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
+--- a/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
++++ b/sdk/objc/Framework/Classes/Metal/RTCMTLVideoView.m
 @@ -60,7 +60,14 @@
  
  + (BOOL)isMetalAvailable {
