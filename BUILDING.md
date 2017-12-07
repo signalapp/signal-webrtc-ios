@@ -22,7 +22,7 @@ Initial Setup for first time building WebRTC.framework
     cd depot_tools
     export PATH=<somewhere>/depot_tools:"$PATH"
 
-## Fetch webrtc source
+## Fetch WebRTC source
 
     git clone https://github.com/WhisperSignal/signal-webrtc-ios
     cd signal-webrtc-ios
@@ -36,7 +36,7 @@ Initial Setup for first time building WebRTC.framework
 
 ## Updating WebRTC.framework (optional)
 
-This section is only required if you want to use a newer version.    
+This section is only required if you want to use a newer version.
 based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
 
     # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
@@ -49,7 +49,7 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
     git fetch
 
     # List available branch heads
-    git branch -a 
+    git branch -a
 
     # Checkout the branch 'src' tree.
     git checkout branch-heads/$LATEST_STABLE_RELEASE_NUMBER
@@ -58,7 +58,7 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
     gclient sync --jobs 16
 
     # Apply Signal Patches
-    # NOTE: If you've previosly applied the patches, they won't apply
+    # NOTE: If you've previously applied the patches, they won't apply
     # cleanly. Start from a pristine clean webrtc dir.
     ../../bin/apply-signal-patches
 
@@ -66,7 +66,8 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
 
 Finally. Why we're all here.
 
-    # the webrtc project includes a script to build a fat framework for arm/arm63/i386/x86_64 
+    # the webrtc project includes a script to build a fat framework for arm/arm64/i386/x86_64
+    # NOTE: the i386 build is currently broken, so you can't run iPhone5 simulators
     tools_webrtc/ios/build_ios_libs.sh
 
     # If you get errors about missing build tools, like 'gn', you may be
