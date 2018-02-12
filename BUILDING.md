@@ -39,6 +39,10 @@ Initial Setup for first time building WebRTC.framework
 This section is only required if you want to use a newer version.
 based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
 
+    # This process dirties the working directory. Start from a pristine
+    # clean webrtc dir.
+    ../../bin/clean_webrtc.py
+
     # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
     #
     # The first time your run this might take a while because it fetches
@@ -58,9 +62,7 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
     gclient sync --jobs 16
 
     # Apply Signal Patches
-    # NOTE: If you've previously applied the patches, they won't apply
-    # cleanly. Start from a pristine clean webrtc dir.
-    ../../bin/apply-signal-patches
+    ../../bin/apply_signal_patches
 
 ## Building WebRTC.framework
 
@@ -71,7 +73,7 @@ Finally. Why we're all here.
     tools_webrtc/ios/build_ios_libs.sh
 
     # If you get errors about missing build tools, like 'gn', you may be
-    # able to install them with the following (then go back to "Build
+    # able to install them with the following (then go back to "Building
     # WebRTC.framework" step:
     gclient runhooks
 
