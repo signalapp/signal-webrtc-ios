@@ -2,8 +2,8 @@ WEBRTC_SRC_DIR=webrtc/src
 
 default: full_build
 
-full_build: clean sync log_build_env update_tools patch build
-fast_build: clean sync log_build_env patch build
+full_build: clean sync update_tools patch build log_build_env
+fast_build: clean sync patch build log_build_env
 
 clean:
 	bin/clean_webrtc.py
