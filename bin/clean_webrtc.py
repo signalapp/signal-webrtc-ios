@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Attempts to reverse any Signal specific modifications to webrtc.
-# If our patches change, this may have to be revisted in the future.
+# If our patches change, this may have to be revisited in the future.
 #
 # Example Usage:
 #
