@@ -2,7 +2,15 @@ Patches required to build webrtc for Signal on iOS
 
 ## Current Patches
 
+### patch file: libwebrtc-andoird/patches/opus.patch
+
+Hardcode CBR mode for opus
+
+## Retired Patches
+
 ### patch file: ios-patches/004_metalkit_aspect_fill.diff
+
+Retired: fixed in upstream webrtc:4feb2044db4
 
 The MetalKit backed video renderer is currently hardcoded to AspectFit,
 which causes letterboxing for our fullscreen video preview. This fix was
@@ -12,6 +20,8 @@ versions.
 https://groups.google.com/forum/#!searchin/discuss-webrtc/RTCMTLVideoView%7Csort:relevance/discuss-webrtc/Fn4Q0dUranY/1YZApRVWAwAJ
 
 ### patch file:   ios-patches/003_support_ios8.diff
+
+Retired: Signal-iOS no longer supports iOS8
 
 In M58 WebRTC introduced MetalKit backed rendering, which enables a
 higher-performance (lower power consumption) video renderer. However,
@@ -25,8 +35,6 @@ Changes to support iOS8 include:
    deployment target.
  - Adding "@availability" checks as necessary to satisfy the compiler
    after changing the minimum deployment target.
-
-## Retired Patches
 
 ### patch file: 002_issue2832803002_20001.diff
 
