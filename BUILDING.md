@@ -39,12 +39,12 @@ Initial Setup for first time building WebRTC.framework
 This section is only required if you want to use a newer version.
 based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
 
+    # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
+    #
     # This process dirties the working directory. Start from a pristine
     # clean webrtc dir.
     ../../bin/clean_webrtc.py
 
-    # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
-    #
     # The first time your run this might take a while because it fetches
     # an extra 1/2 GB or so of branch commits.
     gclient sync --with_branch_heads
@@ -56,6 +56,7 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
     git branch -a
 
     # Checkout the branch 'src' tree.
+    # You can find a list of release notes here: https://webrtc.org/release-notes/
     git checkout branch-heads/$LATEST_STABLE_RELEASE_NUMBER
 
     # Checkout all the submodules at their branch DEPS revisions.
