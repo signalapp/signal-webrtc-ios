@@ -40,7 +40,7 @@ This section is only required if you want to use a newer version.
 based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
 
     # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
-    #
+
     # This process dirties the working directory. Start from a pristine
     # clean webrtc dir.
     ../../bin/clean_webrtc.py
