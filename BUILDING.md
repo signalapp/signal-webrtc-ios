@@ -34,16 +34,17 @@ Initial Setup for first time building WebRTC.framework
     cd webrtc
     gclient sync
 
+    # This process dirties the working directory. If this is your first build,
+    # you can skip this step. Otherwise we want to make sure we start from a
+    # pristine webrtc dir.
+    ../bin/clean_webrtc.py
+
 ## Updating WebRTC.framework (optional)
 
 This section is only required if you want to use a newer version.
 based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-release-branches
 
     # Make sure you are in 'signal-webrtc-ios/webrtc/src'.
-
-    # This process dirties the working directory. Start from a pristine
-    # clean webrtc dir.
-    ../../bin/clean_webrtc.py
 
     # The first time your run this might take a while because it fetches
     # an extra 1/2 GB or so of branch commits.
@@ -62,12 +63,12 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
     # Checkout all the submodules at their branch DEPS revisions.
     gclient sync --jobs 16
 
-    # Apply Signal Patches
-    ../../bin/apply_signal_patches
-
 ## Building WebRTC.framework
 
 Finally. Why we're all here.
+
+    # Apply Signal Patches
+    ../../bin/apply_signal_patches
 
     # the webrtc project includes a script to build a fat framework for arm/arm64/i386/x86_64
     # NOTE: the i386 build is currently broken, so you can't run iPhone5 simulators
