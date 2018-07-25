@@ -50,8 +50,9 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
     # an extra 1/2 GB or so of branch commits.
     gclient sync --with_branch_heads
 
-    # You may have to explicitly 'git fetch origin' to pull branch-heads/
+    # OPTIONAL: If that failed, try repeating after running fetch
     git fetch
+    gclient sync --with_branch_heads
 
     # List available branch heads
     git branch -a
@@ -62,6 +63,9 @@ based on: https://www.chromium.org/developers/how-tos/get-the-code/working-with-
 
     # Checkout all the submodules at their branch DEPS revisions.
     gclient sync --jobs 16
+
+    # Clean up anything that's since been removed from upstream.
+    git clean -df
 
 ## Building WebRTC.framework
 
@@ -84,7 +88,9 @@ Finally. Why we're all here.
     # Remove the existing directory to make sure any obsolete files are removed
     rm -r $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/WebRTC.framework
 
-    # move the WebRTC.framework into Signal-iOS's Carthage directory
+    # Move the WebRTC.framework into Signal-iOS's Carthage directory. We don't actually
+    # use Carthage to build WebRTC, but we use some Carthage scripts to prepare the library
+    # for distribution.
     mv out_ios_libs/WebRTC.framework $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/
 
     # Make sure we add any new files, since we gitignore *
