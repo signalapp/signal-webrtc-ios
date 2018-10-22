@@ -4,3 +4,6 @@
 [submodule "libwebrtc-android"]
 	path = libwebrtc-android
 	url = https://github.com/WhisperSystems/libwebrtc-android.git
+[submodule "Builds"]
+	path = Builds
+	url = git@github.com:signalapp/signal-webrtc-ios-artifacts
