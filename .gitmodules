@@ -3,4 +3,7 @@
 	url = https://chromium.googlesource.com/external/webrtc.git
 [submodule "libwebrtc-android"]
 	path = libwebrtc-android
-	url = https://github.com/WhisperSystems/libwebrtc-android.git
+	url = https://github.com/signalapp/libwebrtc-android.git
+[submodule "Builds"]
+	path = Builds
+	url = https://github.com/signalapp/signal-webrtc-ios-artifacts.git
