@@ -70,7 +70,7 @@ $hostname
     xcode_path = subprocess.check_output(["xcode-select", "-p"]).strip("\n")
     gcc_version = subprocess.check_output(["gcc", "-v"], stderr=subprocess.STDOUT).strip("\n")
     osx_version_details = subprocess.check_output(["sw_vers"]).strip("\n")
-    hostname = subprocess.check_output(["hostname"]).strip("\n")
+    hostname = subprocess.check_output(["scutil", "--get", "ComputerName"]).strip("\n")
 
     details = template.substitute(
             webrtc_git_branch = webrtc_git_branch,

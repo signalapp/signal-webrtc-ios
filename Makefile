@@ -1,9 +1,11 @@
+ROOT_DIR=./
 WEBRTC_SRC_DIR=webrtc/src
+BUILD_ARTIFACTS_DIR=./Builds/Build
 
 default: full_build
 
-full_build: clean sync update_tools patch build log_build_env
-fast_build: clean sync patch build log_build_env
+full_build: clean sync update_tools patch archive
+fast_build: clean sync patch archive
 
 clean:
 	bin/clean_webrtc.py
@@ -23,9 +25,12 @@ update_tools:
 	cd $(WEBRTC_SRC_DIR) && \
 		gclient runhooks --jobs 16
 
-build:
-	cd $(WEBRTC_SRC_DIR) && \
-		tools_webrtc/ios/build_ios_libs.sh
+build: 
+	$(WEBRTC_SRC_DIR)/tools_webrtc/ios/build_ios_libs.sh
 
 log_build_env:
 	bin/print_build_env.py > webrtc/src/out_ios_libs/WebRTC.framework/build_env.txt
+
+archive: build log_build_env 
+	rm -fr $(BUILD_ARTIFACTS_DIR)/WebRTC.framework && \
+	mv $(WEBRTC_SRC_DIR)/out_ios_libs/WebRTC.framework $(BUILD_ARTIFACTS_DIR)
