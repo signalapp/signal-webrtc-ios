@@ -14,6 +14,7 @@ patch:
 	bin/apply_signal_patches
 
 sync:
+	git submodule update
 	cd $(WEBRTC_SRC_DIR) && \
 		gclient sync --jobs 16
 
