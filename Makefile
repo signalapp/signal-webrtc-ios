@@ -4,8 +4,8 @@ BUILD_ARTIFACTS_DIR=./Builds/Build
 
 default: full_build
 
-full_build: clean sync update_tools patch archive
-fast_build: clean sync patch archive
+full_build: clean sync update_tools archive
+fast_build: clean sync archive
 
 clean:
 	bin/clean_webrtc.py
@@ -31,6 +31,6 @@ build:
 log_build_env:
 	bin/print_build_env.py > webrtc/src/out_ios_libs/WebRTC.framework/build_env.txt
 
-archive: build log_build_env 
+archive: patch build log_build_env 
 	rm -fr $(BUILD_ARTIFACTS_DIR)/WebRTC.framework && \
 	mv $(WEBRTC_SRC_DIR)/out_ios_libs/WebRTC.framework $(BUILD_ARTIFACTS_DIR)
