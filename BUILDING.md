@@ -24,7 +24,7 @@ Initial Setup for first time building WebRTC.framework
 
 ## Fetch WebRTC source
 
-    git clone https://github.com/WhisperSignal/signal-webrtc-ios
+    git clone https://github.com/signalapp/signal-webrtc-ios
     cd signal-webrtc-ios
 
     # Fetch the webrtc src root plus our shared patches
