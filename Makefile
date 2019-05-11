@@ -7,6 +7,17 @@ default: full_build
 full_build: clean sync update_tools archive
 fast_build: clean sync archive
 
+update_step1: clean
+	cd $(WEBRTC_SRC_DIR) && \
+			gclient sync --with_branch_heads && \
+			git branch -a
+	echo "Updated. Now checkout the latest stable branch"
+
+update_step2:
+	cd $(WEBRTC_SRC_DIR) && \
+		gclient sync --jobs 16 && \
+		git clean -df && \
+
 clean:
 	bin/clean_webrtc.py
 
