@@ -96,4 +96,5 @@ Finally. Why we're all here.
     # Make sure we add any new files, since we gitignore *
     cd $SIGNAL_IOS_REPO_ROOT/ThirdParty/WebRTC/Build
     git add -f WebRTC.framework
+    git commit -m "update artifact to <Version> (e.g. M72)"
 
