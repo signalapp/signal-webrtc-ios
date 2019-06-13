@@ -86,14 +86,14 @@ Finally. Why we're all here.
 # Integrate into Signal
 
     # Remove the existing directory to make sure any obsolete files are removed
-    rm -r $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/WebRTC.framework
+    rm -r $SIGNAL_IOS_REPO_ROOT/ThirdParty/WebRTC/Build/WebRTC.framework
 
     # Move the WebRTC.framework into Signal-iOS's Carthage directory. We don't actually
     # use Carthage to build WebRTC, but we use some Carthage scripts to prepare the library
     # for distribution.
-    mv out_ios_libs/WebRTC.framework $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS/
+    mv out_ios_libs/WebRTC.framework $SIGNAL_IOS_REPO_ROOT/ThirdParty/WebRTC/Build/
 
     # Make sure we add any new files, since we gitignore *
-    cd $SIGNAL_IOS_REPO_ROOT/Carthage/Build/iOS
+    cd $SIGNAL_IOS_REPO_ROOT/ThirdParty/WebRTC/Build
     git add -f WebRTC.framework
 
