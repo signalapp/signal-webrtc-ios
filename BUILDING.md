@@ -88,9 +88,8 @@ Finally. Why we're all here.
     # Remove the existing directory to make sure any obsolete files are removed
     rm -r $SIGNAL_IOS_REPO_ROOT/ThirdParty/WebRTC/Build/WebRTC.framework
 
-    # Move the WebRTC.framework into Signal-iOS's Carthage directory. We don't actually
-    # use Carthage to build WebRTC, but we use some Carthage scripts to prepare the library
-    # for distribution.
+    # Move the WebRTC.framework into Signal-iOS's WebRTC directory.
+    # This is a submodule to keep the size of the primary Signal-iOS repository down, 
     mv out_ios_libs/WebRTC.framework $SIGNAL_IOS_REPO_ROOT/ThirdParty/WebRTC/Build/
 
     # Make sure we add any new files, since we gitignore *
