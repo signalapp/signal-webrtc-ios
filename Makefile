@@ -16,7 +16,7 @@ update_step1: clean
 update_step2:
 	cd $(WEBRTC_SRC_DIR) && \
 		gclient sync --jobs 16 && \
-		git clean -df && \
+		git clean -df
 
 clean:
 	bin/clean_webrtc.py
