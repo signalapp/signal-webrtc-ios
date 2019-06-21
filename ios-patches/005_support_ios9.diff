@@ -1,0 +1,38 @@
+diff --git a/.gn b/.gn
+index 5c9f362c3f..9110455155 100644
+--- a/.gn
++++ b/.gn
+@@ -63,7 +63,8 @@ default_args = {
+ 
+   mac_sdk_min = "10.12"
+ 
+-  ios_deployment_target = "10.0"
++  # http://bugs.webrtc.org/8570
++  ios_deployment_target = "9.0"
+ 
+   # The SDK API level, in contrast, is set by build/android/AndroidManifest.xml.
+   android32_ndk_api_level = 16
+diff --git a/tools_webrtc/ios/build_ios_libs.py b/tools_webrtc/ios/build_ios_libs.py
+index b0d28c0151..76a61f1f0b 100755
+--- a/tools_webrtc/ios/build_ios_libs.py
++++ b/tools_webrtc/ios/build_ios_libs.py
+@@ -33,7 +33,7 @@ SDK_OUTPUT_DIR = os.path.join(SRC_DIR, 'out_ios_libs')
+ SDK_FRAMEWORK_NAME = 'WebRTC.framework'
+ 
+ DEFAULT_ARCHS = ENABLED_ARCHS = ['arm64', 'arm', 'x64', 'x86']
+-IOS_DEPLOYMENT_TARGET = '10.0'
++IOS_DEPLOYMENT_TARGET = '9.0'
+ LIBVPX_BUILD_VP9 = False
+ 
+ sys.path.append(os.path.join(SCRIPT_DIR, '..', 'libs'))
+@@ -156,6 +156,10 @@ def main():
+     _CleanTemporary(args.output_dir, architectures)
+     return 0
+ 
++  # Ignoring x86 for now because of a GN build issue
++  # where the generated dynamic framework has the wrong architectures.
++  architectures.remove('x86')
++
+   gn_target_name = 'framework_objc'
+   if not args.bitcode:
+     gn_args.append('enable_dsyms=true')

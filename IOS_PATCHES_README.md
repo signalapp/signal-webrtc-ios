@@ -6,6 +6,18 @@ Patches required to build webrtc for Signal on iOS
 
 Hardcode CBR mode for opus
 
+### patch file: ios-patches/005_support_ios9.diff
+
+Upstream removed support for iOS9.
+
+Reverts commits:
+    ad3971f40f5c38d340cd1a2642c189cef3368c02
+    ffe9376a13e03901a6351d58a8da5e6d28b3ae52
+
+A related restriction is that supporting 32bit simulator is related to
+supporting iOS9 builds. So part of the reversion re-sets the build target to
+iOS9, and the other part re-disables support for 32-bit simulator.
+
 ## Retired Patches
 
 ### patch file: ios-patches/004_metalkit_aspect_fill.diff
