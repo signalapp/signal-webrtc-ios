@@ -18,6 +18,18 @@ A related restriction is that supporting 32bit simulator is related to
 supporting iOS9 builds. So part of the reversion re-sets the build target to
 iOS9, and the other part re-disables support for 32-bit simulator.
 
+### patch file: ios-patches/006_support_ios9.diff
+
+Works around some build errors like:
+
+    ERROR at //build/config/BUILDCONFIG.gn:564:5: Dependency not allowed.
+        target(_target_type, target_name) {
+        ^----------------------------------
+    The item //rtc_tools:psnr_ssim_analyzer can not depend on //third_party/abseil-cpp/absl/flags:usage 
+    because it is not in //third_party/abseil-cpp/absl/flags:usage's visibility list: [ //third_party/abseil-cpp/absl/flags:*]
+
+Seemingly related to commits like 4e722459ecb6705cb2ffa17d0fcf49ea0328bf5c 
+
 ## Retired Patches
 
 ### patch file: ios-patches/004_metalkit_aspect_fill.diff

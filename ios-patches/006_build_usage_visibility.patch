@@ -1,0 +1,11 @@
+--- src/third_party/abseil-cpp/absl/flags/BUILD.gn
++++ src/third_party/abseil-cpp/absl/flags/BUILD.gn
+@@ -199,7 +199,7 @@ source_set("usage") {
+     "../synchronization",
+   ]
+   visibility = []
+-  visibility += [ ":*" ]
++  visibility += [ "*:*" ]
+ }
+ 
+ source_set("parse") {
